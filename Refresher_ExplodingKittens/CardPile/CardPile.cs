@@ -6,5 +6,6 @@ namespace Refresher_ExplodingKittens
 {
     class CardPile
     {
+        public List<Card> Cards = new List<Card>();
     }
 }
