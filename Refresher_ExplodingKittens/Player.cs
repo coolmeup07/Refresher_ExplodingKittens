@@ -10,7 +10,7 @@ namespace Refresher_ExplodingKittens
         public int NumOfTurns { get; set; }
         public bool IsAlive { get; set; }
 
-        public CardPile Hand = new CardPile();
+        public CardPile Hand;
 
         public virtual void EvaluateTurn() { }
         public virtual Player SelectTarget() { throw new NotImplementedException(); }

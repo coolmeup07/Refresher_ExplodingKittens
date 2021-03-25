@@ -11,5 +11,6 @@ namespace Refresher_ExplodingKittens
 
         public virtual void OnCardUsing(Player target, Deck deck, GameManager gm) {}
         public virtual void Use(Player target, Deck deck, GameManager gm) { }
+        public virtual void DisplayCard(){ Console.WriteLine(CardName); }
     }
 }
