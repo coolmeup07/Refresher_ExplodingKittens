@@ -45,5 +45,16 @@ namespace Refresher_ExplodingKittens
             Cards.Remove(Cards[Cards.Count - 1]);
             return temp;
         }
+
+
+        /// <summary>
+        /// Displays cards based on amount from the top of the deck.
+        /// </summary>
+        /// <param name="amount">Number of Cards to show</param>
+        public void DisplayCards(int amount)
+        {
+            for (int x = 0; x < amount; x++)
+                Console.WriteLine(Cards[Cards.Count-x]);
+        }
     }
 }

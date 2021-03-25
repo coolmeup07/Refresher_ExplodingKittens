@@ -6,11 +6,10 @@ namespace Refresher_ExplodingKittens
 {
     abstract class Card
     {       
-        public string CardName { get; set; }
-        private string cardName;
+        protected string CardName { get; set; }
 
-        public virtual void OnCardUsing(Player target, Deck deck, GameManager gm) {}
-        public virtual void Use(Player target, Deck deck, GameManager gm) { }
+        public virtual void OnCardUsing(Player user, Player target, Deck deck) {}
+        public virtual void Use(Player user, Player target, Deck deck) { }
         public virtual void DisplayCard(){ Console.WriteLine(CardName); }
     }
 }
