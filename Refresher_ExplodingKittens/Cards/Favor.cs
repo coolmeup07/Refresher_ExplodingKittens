@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Refresher_ExplodingKittens
 {
-    class Favor
+    class Favor : Card
     {
     }
 }
