@@ -6,5 +6,8 @@ namespace Refresher_ExplodingKittens
 {
     class DiscardPile : CardPile
     {
+        public DiscardPile(GameManager gameManager) : base(gameManager)
+        {
+        }
     }
 }

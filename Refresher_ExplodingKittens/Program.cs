@@ -6,7 +6,10 @@ namespace Refresher_ExplodingKittens
     {
         static void Main(string[] args)
         {
-                
+            GameManager gm = new GameManager();
+            gm.SetupGame();
+            gm.GameLoop();
+            Console.WriteLine();
         }
     }
 }

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Refresher_ExplodingKittens
 {
-    class AIPlayer
+    class AIPlayer : Player
     {
+        public AIPlayer(string pName) : base(pName) { }
     }
 }
