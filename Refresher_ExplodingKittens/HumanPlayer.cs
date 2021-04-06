@@ -10,12 +10,20 @@ namespace Refresher_ExplodingKittens
 
         public void CompleteHand()
         {
-            hand.Cards.Add(new Defuse());
+            hand.AddCard((new Defuse()));
         }
 
         public override void EvaluateTurn()
         {
-            
+            while(NumOfTurns > 0)
+            {
+                
+            }
+        }
+
+        private void SelectAction()
+        {
+            throw new NotImplementedException();
         }
 
         public override Player SelectTarget(List<Player> targets)

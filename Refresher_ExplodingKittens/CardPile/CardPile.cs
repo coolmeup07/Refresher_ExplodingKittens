@@ -6,7 +6,7 @@ namespace Refresher_ExplodingKittens
 {
     class CardPile
     {
-        public List<Card> Cards = new List<Card>();
+        protected List<Card> cards = new List<Card>();
         protected GameManager gm;
 
         public CardPile(GameManager gameManager)
@@ -16,9 +16,11 @@ namespace Refresher_ExplodingKittens
 
         public void DisplayCards()
         {
-            foreach (Card card in Cards)
+            foreach (Card card in cards)
                 card.DisplayCard();
         }
-        public void ShuffleCards() { gm.ShuffleList(Cards); }
+        public void AddCard(Card card) { cards.Add(card); }
+        public void RemoveCard(Card card) { cards.Add(card); }
+        public void ShuffleCards() { gm.ShuffleList(cards); }
     }
 }

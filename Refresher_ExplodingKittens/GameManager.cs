@@ -7,42 +7,77 @@ namespace Refresher_ExplodingKittens
     class GameManager
     {
         private Random random = new Random();
-        private Player[] players = new Player[4];
+        private List<Player> players = new List<Player>();
         private Deck deck;
+        private int currentTurn;
+        private int turns;
 
         public void SetupGame()
         {
             // Get Player Name
             Console.Write("Please type your name: ");
-            players[0] = new HumanPlayer(Convert.ToString(Console.ReadLine()));
+            players.Add(new HumanPlayer(Convert.ToString(Console.ReadLine())));
             Console.WriteLine("Welcome " +players[0].PlayerName);
 
             // Create AI Players
             for (int x = 0; x < 3; x++)
-                players[x + 1] = new AIPlayer("AI " +(x+1));
+                players.Add(new AIPlayer("AI " +(x+1)));
 
             Console.WriteLine("Current Players:");
-            for (int x = 0; x < players.Length; x++)
+            for (int x = 0; x < players.Count; x++)
                 Console.WriteLine(players[x].PlayerName);
+
+            // Shuffle Player Order
+            Console.WriteLine("Shuffling Player turn order");
+            ShuffleList(players);
 
             //Initialize Deck
             deck = new Deck(this);
-            deck.CompleteDeck(players.Length);
+            deck.CompleteDeck(players.Count);
             deck.ShuffleCards();
-            deck.DisplayCards();
 
-            while (players[0].IsAlive)
+            while (MoreThan1PlayerAlive())
             {
-                deck.DrawCard().DisplayCard();
-                Console.WriteLine("Current Deck.");
-                deck.DisplayCards();
-                Console.ReadLine();
+                GameLoop();
             }
         }
 
         public void GameLoop()
         {
+            for (int x = 0; x < players.Count; x++)
+            {
+                DisplayTurnOrder();
+                players[x].EvaluateTurn();
 
+                Console.WriteLine("Enter to begin next turn");
+                Console.ReadLine();
+                currentTurn++;
+                turns++;
+                if (x == players.Count - 1) currentTurn = 0;
+            }
+        }
+
+        public void DisplayTurnOrder()
+        {
+            Console.WriteLine("Current Turn: {0}", turns);
+            for(int x=0; x<players.Count; x++)
+            {
+                if (x == currentTurn)
+                    Console.WriteLine("{0} <--- Current Player", players[x].PlayerName);
+                else
+                    Console.WriteLine("{0}", players[x].PlayerName);
+            }
+        }
+
+        public bool MoreThan1PlayerAlive()
+        {
+            int aliveCounter = 0;
+            for (int x=0; x<players.Count; x++)
+            {
+                if (players[x].IsAlive)
+                    aliveCounter += 1;
+            }
+            return (aliveCounter > 1);
         }
 
         public int GetRandomNum(int min, int max){ return random.Next(min, max); }

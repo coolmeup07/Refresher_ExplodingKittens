@@ -15,20 +15,20 @@ namespace Refresher_ExplodingKittens
         {
             for (int x = 0; x < 4; x++)
             {
-                Cards.Add(new Attack());
-                Cards.Add(new Skip());
-                Cards.Add(new Favor());
-                Cards.Add(new Shuffle());
-                Cards.Add(new CatCard(CatCard.CatCardType.BeardCat));
-                Cards.Add(new CatCard(CatCard.CatCardType.Cattermelon));
-                Cards.Add(new CatCard(CatCard.CatCardType.HairyPotatoCat));
-                Cards.Add(new CatCard(CatCard.CatCardType.RainbowRalphingCat));
-                Cards.Add(new CatCard(CatCard.CatCardType.TacoCat));
+                cards.Add(new Attack());
+                cards.Add(new Skip());
+                cards.Add(new Favor());
+                cards.Add(new Shuffle());
+                cards.Add(new CatCard(CatCard.CatCardType.BeardCat));
+                cards.Add(new CatCard(CatCard.CatCardType.Cattermelon));
+                cards.Add(new CatCard(CatCard.CatCardType.HairyPotatoCat));
+                cards.Add(new CatCard(CatCard.CatCardType.RainbowRalphingCat));
+                cards.Add(new CatCard(CatCard.CatCardType.TacoCat));
             }
             for (int x = 0; x < 5; x++)
             {
                 //Cards.Add(new Nope());
-                Cards.Add(new SeeTheFuture());
+                cards.Add(new SeeTheFuture());
             }
         }
 
@@ -38,30 +38,34 @@ namespace Refresher_ExplodingKittens
                 player.AddCard(DrawCard());
         }
 
+        /// <summary>
+        /// Adds Defuse and Exploding Kitten Cards based on the # of players
+        /// </summary>
+        /// <param name="playerCount">Number of Players in game</param>
         public void CompleteDeck(int playerCount)
         {
             if (playerCount <= 3)
             {
                 for(int x = 0; x < 2; x++)
-                    Cards.Add(new Defuse());
+                    cards.Add(new Defuse());
             } 
             else
             {
                 for (int x = 0; x < 6-playerCount; x++)
-                    Cards.Add(new Defuse());
+                    cards.Add(new Defuse());
             }
             for (int x = 0; x < playerCount-1; x++)
-                Cards.Add(new ExplodingKitten());
+                cards.Add(new ExplodingKitten());
         }
 
         /// <summary>
         /// Draws card from CardPile
         /// </summary>
-        /// <returns>Card at top of pile (last card in the list) </returns>
+        /// <returns>Card at top of pile (last card in the list)</returns>
         public Card DrawCard()
         {
-            var temp = Cards[Cards.Count - 1];
-            Cards.Remove(Cards[Cards.Count - 1]);
+            var temp = cards[cards.Count - 1];
+            cards.Remove(cards[cards.Count - 1]);
             return temp;
         }
 
@@ -73,7 +77,7 @@ namespace Refresher_ExplodingKittens
         public void DisplayCards(int amount)
         {
             for (int x = 0; x < amount; x++)
-                Console.WriteLine(Cards[Cards.Count-x]);
+                Console.WriteLine(cards[cards.Count-x]);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Refresher_ExplodingKittens
     {
         public string PlayerName { get; set; }
         public bool IsAlive { get; set; }
-        public int TurnOrder { get; set; }
         public int NumOfTurns { get; set; }
 
         protected CardPile hand;
@@ -19,7 +18,7 @@ namespace Refresher_ExplodingKittens
             IsAlive = true;
         } 
 
-        public void AddCard(Card card) { hand.Cards.Add(card); }
+        public void AddCard(Card card) { hand.AddCard(card); }
         public void DisplayHand() { hand.DisplayCards(); }
 
         public virtual void EvaluateTurn() { }
